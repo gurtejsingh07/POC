@@ -27,4 +27,5 @@ export const STRINGS = {
   SG_20: 'S$ 20,000',
   ENTER_AMOUNT: 'Enter amount',
   DEBIT_SPENDING_LIMIT: 'Debit card spending limit',
+  WEEKLY_SPENDING_SUBTITLE: 'Your weekly spending limit is S$ ',
 };

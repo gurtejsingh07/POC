@@ -8,6 +8,8 @@ import {
 } from '../../../shared';
 import React from 'react';
 import {CustomSwitch} from '../../atoms';
+import {useSelector} from 'react-redux';
+
 const rows = [
   {
     _id: 1,
@@ -48,10 +50,17 @@ const rows = [
 ];
 
 const Row = (item, toggleSwitch, isEnabled) => {
+  const weeklyLimitAmount = useSelector(state => state.user.weeklyLimitAmount);
   const {_id, _title, _subtitle, _switch, _icon} = item;
+  let subTitleString = '';
   let isEnabledValue = false;
   if (_id == 2) {
     isEnabledValue = isEnabled;
+    subTitleString = isEnabled
+      ? STRINGS.WEEKLY_SPENDING_SUBTITLE + `${weeklyLimitAmount}`
+      : _subtitle;
+  } else {
+    subTitleString = _subtitle;
   }
   return (
     <View key={_id.toString()} style={styles.rowContainer}>
@@ -59,7 +68,7 @@ const Row = (item, toggleSwitch, isEnabled) => {
         <Image source={_icon} style={styles.icon} />
         <View style={styles.titleContainer}>
           <Text style={styles.title}>{_title}</Text>
-          <Text style={styles.subtitle}>{_subtitle}</Text>
+          <Text style={styles.subtitle}>{subTitleString}</Text>
         </View>
       </View>
       {_switch && (
