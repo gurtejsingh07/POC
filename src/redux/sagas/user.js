@@ -1,18 +1,7 @@
 import {all, put, takeLatest} from 'redux-saga/effects';
-import {
-  getRequest,
-  postRequest,
-  updateAuthToken,
-} from '../../shared/services/axios';
+import {getRequest} from '../../shared/services/axios';
 import {GET_USER_DATA, startLoading, stopLoading} from '../actions';
-import {
-  API,
-  TEXT_CONST,
-  popToTop,
-  NAVIGATION,
-  push,
-  STRINGS,
-} from '../../shared';
+import {API, STRINGS} from '../../shared';
 
 function* getUserData({
   payload: {netConnected, success = () => {}, fail = () => {}} = {},

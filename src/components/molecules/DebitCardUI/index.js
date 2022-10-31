@@ -17,16 +17,16 @@ const DebitCardUI = ({showCardDetails, userData}) => {
         <Text style={styles.aspire}>{STRINGS.ASPIRE}</Text>
       </View>
       <View style={styles.detailsContainer}>
-        <Text style={styles.name}>{userData?._name}</Text>
+        <Text style={styles.name}>{userData?.name}</Text>
         {showCardDetails ? (
           <Text style={styles.cardNumberText}>
-            {userData?._cardDetails?._number}
+            {userData?.cardDetails?.number}
           </Text>
         ) : (
           <Text style={CommonStyles.marginTop(30)}>
             <Text style={styles.hiddenCardText}>{_hiddenCard}</Text>
             <Text style={styles.cardNumberText}>
-              {'  ' + userData?._cardDetails?._number.split(' ')[3]}
+              {'  ' + userData?.cardDetails?.number.split(' ')[3]}
             </Text>
           </Text>
         )}
@@ -37,7 +37,7 @@ const DebitCardUI = ({showCardDetails, userData}) => {
           </Text>
           <Text style={styles.cvvText}>{STRINGS.CVV}</Text>
           <Text style={styles.hiddenCvv(showCardDetails)}>
-            {showCardDetails ? userData?._cardDetails?._cvv : _hiddenCVV}
+            {showCardDetails ? userData?.cardDetails?.cvv : _hiddenCVV}
           </Text>
         </View>
       </View>

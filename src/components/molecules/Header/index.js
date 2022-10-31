@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import {_scaleText, COLORS, IMAGES} from '../../../shared';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-
+MaterialIcons.loadFont();
 const W = Dimensions.get('window').width;
 
 const CustomHeader = ({

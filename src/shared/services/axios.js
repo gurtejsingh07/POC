@@ -1,30 +1,34 @@
 import axios from 'axios';
-import pickBy from 'lodash/pickBy';
-import {BASE_URL} from '../constants';
-
-const defaulHeader = {
-  headers: {
-    'content-type': 'application/json',
+let payload = {
+  token: 'Ndud1qHvKo6pc_Ja-fGCJA',
+  data: {
+    id: '6360098bca0fe3c21aab2949',
+    name: 'Gurtej Singh',
+    cardDetails: {
+      number: '4242 4242 4246 9870',
+      expiry: '09/28',
+      cvv: '347',
+    },
+    debitAccount: {
+      balance: 4000,
+      weeklyLimit: false,
+      weeklyLimitAmount: 7000,
+      moneySpent: 3000,
+    },
   },
 };
-
-const instance = axios.create({
-  baseURL: BASE_URL,
-  timeout: 20000,
-  defaulHeader,
-});
-
 export const getRequest = ({API = ''}) => {
   return new Promise((resolve, reject) => {
-    instance
-      .get(API)
-      .then(result => {
-        resolve(result);
+    axios({
+      method: 'post',
+      url: API,
+      data: payload,
+    })
+      .then(function (resp) {
+        resolve(resp);
       })
       .catch(error => {
-        resolve(error.response);
+        reject(error.response);
       });
   });
 };
-
-export default instance;

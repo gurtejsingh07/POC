@@ -27,7 +27,7 @@ import {getUserData, setWeeklyLimit} from '../../../../redux/actions';
 import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 const W = Dimensions.get('window').width;
-
+Octicons.loadFont();
 UIManager.setLayoutAnimationEnabledExperimental &&
   UIManager.setLayoutAnimationEnabledExperimental(true);
 const DebitCardTab = () => {
@@ -45,7 +45,7 @@ const DebitCardTab = () => {
       const payload = {
         netConnected,
         success: data => {
-          setUserData(data?.data);
+          setUserData(data);
         },
         fail: message => {
           Alert.alert(message);
@@ -67,7 +67,7 @@ const DebitCardTab = () => {
 
   const getBarFilledValue = () => {
     const value =
-      userData?._account?._money_spent / parseInt(weeklyLimitAmount);
+      userData?.debitAccount?.moneySpent / parseInt(weeklyLimitAmount);
     return value * W;
   };
 
@@ -81,7 +81,7 @@ const DebitCardTab = () => {
             <Text style={styles.currencyText}>{STRINGS.SD}</Text>
           </View>
           <Text style={styles.amountText}>
-            {userData?._account?._balance.toLocaleString('en')}
+            {userData?.debitAccount?.balance.toLocaleString('en')}
           </Text>
         </View>
         <ScrollView
@@ -117,7 +117,7 @@ const DebitCardTab = () => {
                   <Text>{STRINGS.DEBIT_SPENDING_LIMIT}</Text>
                   <Text>
                     <Text style={{color: COLORS.SECONDARY}}>
-                      {'$' + userData?._account?._money_spent}
+                      {'$' + userData?.debitAccount?.moneySpent}
                     </Text>
                     <Text style={{color: COLORS.GREY.A7}}>
                       {'  |  $' + weeklyLimitAmount}
