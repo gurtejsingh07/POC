@@ -1,6 +1,6 @@
 import React from 'react';
 import {createNativeStackNavigator} from 'react-native-screens/native-stack';
-import {NAVIGATION, _handleNotifications} from '../shared';
+import {NAVIGATION} from '../shared';
 import {BottomTab, WeeklyLimitScreen} from '../screens';
 const Stack = createNativeStackNavigator();
 
